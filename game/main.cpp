@@ -1,7 +1,6 @@
 #include "raylib.h"
 
 #include "framework/resourcemanager.h"
-#include "gamescene.h"
 #include "framework/core.h"
 #include "settings.h"
 
@@ -18,7 +17,7 @@ int main()
 
     while (core.running) //while (core.Run(game)) { ; }
     {
-		core.Run(s->GetActiveScene());
+		core.Run(s->GetActiveScene(), BACKGROUND);
     }
 
 	rs->Cleanup();

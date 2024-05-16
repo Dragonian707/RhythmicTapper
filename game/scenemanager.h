@@ -25,7 +25,7 @@ private:
 
 	Scene* currentScene = nullptr;
 
-	enum Active {menuscene, gamescene};
+	enum Active {menuscene, callibrationscene, level1, level2};
 	Active active;
 };
 

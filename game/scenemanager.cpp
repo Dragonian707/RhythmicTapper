@@ -49,15 +49,15 @@ void SceneManager::SetActiveScene()
 	std::cout << "changing scene to " << currentScene->activescene << std::endl;
 	switch (currentScene->activescene)
 	{
-		case 0:
+		case 0: //menu scene
 			delete currentScene;
 			currentScene = new MenuScene();
 			active = menuscene;
 			break;
-		case 1:
+		case 1: //callibration scene
 			delete currentScene;
-			currentScene = new GameScene();
-			active = gamescene;
+			currentScene = new CallibrationScene();
+			active = callibrationscene;
 			break;
 		default:
 			active = menuscene;

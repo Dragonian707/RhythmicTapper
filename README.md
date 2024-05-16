@@ -1,5 +1,4 @@
-Music Evade
+Rhythm Tapper
 
-A spike dodging game played with your mouse all happening on the beat.<br>
-Your goal is to get as far as possible without getting hit by any of the spikes.<br>
-Good luck.
+A rhythm game all about precision on the beat. This beat can change throughout the song 
+and can start whenever. Heavily inspired by rhythm heaven and rhythm doctor.

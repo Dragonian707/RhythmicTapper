@@ -17,10 +17,10 @@ Core::~Core()
 	
 }
 
-void Core::Run(Scene* scene)
+void Core::Run(Scene* scene, Color bg)
 {
 	BeginDrawing();
-	ClearBackground(BLACK);
+	ClearBackground(bg);
 
 	//set the deltatime
 	SetDeltatime();

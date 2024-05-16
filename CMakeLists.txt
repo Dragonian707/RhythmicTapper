@@ -26,10 +26,14 @@ add_executable(${PROJECT_NAME}
 	game/framework/button.cpp
 	game/main.cpp
 
-	game/gamescene.cpp
-	game/gamescene.h
+	game/callibrationscene.cpp
+	game/callibrationscene.h
 	game/scenemanager.cpp
 	game/scenemanager.h
+	game/level1scene.cpp
+	game/level1scene.h
+	game/level.cpp
+	game/level.h
 	game/menuscene.cpp
 	game/menuscene.h
 	game/settings.h

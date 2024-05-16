@@ -11,7 +11,7 @@ public:
 	/// @brief Destructor
 	virtual ~Core();
 
-	void Run(Scene* scene);
+	void Run(Scene* scene, Color bg);
 
 	bool running = true;
 
