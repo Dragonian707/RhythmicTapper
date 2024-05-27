@@ -56,8 +56,13 @@ void SceneManager::SetActiveScene()
 			break;
 		case 1: //callibration scene
 			delete currentScene;
-			currentScene = new CallibrationScene();
-			active = callibrationscene;
+			currentScene = new CalibrationScene();
+			active = calibrationscene;
+			break;
+		case 2: //level 1
+			delete currentScene;
+			currentScene = new Level1Scene(0, "assets/track1.mp3");
+			active = level1;
 			break;
 		default:
 			active = menuscene;

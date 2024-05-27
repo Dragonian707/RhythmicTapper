@@ -38,7 +38,7 @@ void MenuScene::update(float deltaTime)
 
 void MenuScene::StartGame()
 {
-	activescene = 1;
+	activescene = 2;
 }
 
 //void MenuScene::OpenOptions()

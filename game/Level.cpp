@@ -1,27 +1,63 @@
 #include <fstream>
 #include <sstream>
 
-#include "gamescene.h"
+#include "Level.h"
 
 
-
-GameScene::GameScene()
+//when a beat happens call a method named 'pulse' which takes a float argument with how long the time between flashes should be.
+//this should enable me to (hopefuly) send multiple pulses after eachother and in different rhythms
+Level::Level(float os)
 {
-	gametrack = ResourceManager::Instance()->GetMusic("assets/music_evade.ogg");
-	PlayMusicStream(gametrack);
-	activescene = 1;
+	offset = os;
+
+	gradeText = new TextSprite();
+	gradeText->position = Vector2(SCRWIDTH / 2, SCRHEIGHT / 2);
+
+	flavorText = new TextSprite();
+	flavorText->SetMessage("Doing pretty well eh?");
+	flavorText->position = Vector2(SCRWIDTH / 2, SCRHEIGHT / 2 - 200);
 }
 
-GameScene::~GameScene()
+Level::~Level()
 {
 	
 }
 
-void GameScene::update(float deltaTime)
+void Level::RestartLevel()
 {
-	UpdateMusicStream(gametrack);
-	if (IsKeyPressed(KEY_BACKSPACE)) //Can't use escape sadly, too much input delay
+	//reset the level
+	ready = false;
+	score = 0;
+	grade = 'S';
+	StopMusicStream(leveltrack);
+	PlayMusicStream(leveltrack);
+}
+
+void Level::PauseUnpauseGame()
+{
+	if (paused)
 	{
-		CloseGame();
+		//pause game
 	}
+	else
+	{
+		//unpause game
+	}
+	paused = !paused;
+}
+
+void Level::CalculateGrade()
+{
+	if (score >= 25)	{ grade = 'F'; return; }
+	if (score >= 17)	{ grade = 'D'; return; }
+	if (score >= 12)	{ grade = 'C'; return; }
+	if (score >= 5)		{ grade = 'B'; return; }
+	if (score >= 1)		{ grade = 'A'; return; }
+	
+	grade = 'S';
+}
+
+void Level::ShowGrade()
+{
+
 }

@@ -23,6 +23,7 @@ public:
 
 
 	//position rotation and scale
+
 	Vector2 position;
 	float rotation;
 	float scale;

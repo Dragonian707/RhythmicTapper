@@ -16,8 +16,11 @@ public:
 
 	Sound GetSound(std::string path);
 	
+	//Get a music track from the specified location. 
+	//Warning: the last 100ms of the song gets cut off at the end of the track
 	Music GetMusic(std::string path);
 
+	//Get the specified font
 	Font GetFont() { return _font; };
 
 	void Cleanup();

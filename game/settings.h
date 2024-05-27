@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#define SCRWIDTH 1920
-#define SCRHEIGHT 1080
+#define SCRWIDTH 1600
+#define SCRHEIGHT 900
 
 #define WINDOWNAME "Rhytmic Tapper"
 

@@ -8,7 +8,8 @@
 
 int main()
 {
-	SetConfigFlags(FLAG_FULLSCREEN_MODE);
+	//SetConfigFlags(FLAG_FULLSCREEN_MODE);
+	SetConfigFlags(FLAG_WINDOW_UNDECORATED);
 	InitWindow(SCRWIDTH, SCRHEIGHT, WINDOWNAME);
 
 	ResourceManager* rs = ResourceManager::Instance();

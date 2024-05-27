@@ -3,32 +3,56 @@
 
 #include "framework/scene.h"
 #include "framework/textsprite.h"
+#include "settings.h";
 
-//class Spawner;
-
-class Level
+class Level : public Scene
 {
+protected:
+	bool ready = false; //is the user ready to begin
+
+	//restart the level from the beginning including readying up again
+	void RestartLevel();
+
+	//pause or unpause the game when the appropriate button or key is pressed
+	void PauseUnpauseGame();
+
+	//calculate what the grade should be depending on the amount of mistakes
+	void CalculateGrade();
+
+	//show the text on screen displaying the grade you got
+	void ShowGrade();
+
+	//tracks when the space bar was hit
+	std::vector<float> hits;
+
+	//the amount of offset to add to a spcebar hit every 'beat'
+	float offset = 60;
+
+	float timer = 0;
+
 public:
 	/// @brief Constructor
-	Level();
+	Level(float os);
 	/// @brief Destructor
 	virtual ~Level();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
-	virtual void update(float deltaTime);
+	//virtual void update(float deltaTime);
 
 private:
 	Music leveltrack;
 
-	//float score = 0;
-	bool paused = false;
-	bool ready = false;
+	int score = 0; //the amount of missed inputs
+	char grade = 'S'; //the grade you get at the end dependent on missed inputs
+	//degrades every 5-10 misses -> S > A > B > C > D > F
 
-	void RestartLevel();
-	void PauseUnpauseGame();
-	//void OpenOptions();
+	TextSprite* gradeText; //displays the grade on screen
+	TextSprite* flavorText; //adds some flovor text under the grade
+
+
+	bool paused = false; //is the game paused right now
 };
 
 #endif

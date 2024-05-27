@@ -1,18 +1,19 @@
-#ifndef GAMESCENE_H
-#define GAMESCENE_H
+#ifndef CALIBRATIONSCENE_H
+#define CALIBRATIONSCENE_H
 
 #include "framework/scene.h"
 #include "framework/textsprite.h"
+#include "settings.h"
 
 //class Spawner;
 
-class GameScene : public Scene
+class CalibrationScene : public Scene
 {
 public:
 	/// @brief Constructor
-	GameScene();
+	CalibrationScene();
 	/// @brief Destructor
-	virtual ~GameScene();
+	virtual ~CalibrationScene();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
@@ -20,14 +21,15 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-	Music gametrack;
+	Music practicetrack;
+	std::vector<float> offsets;
+	float finalOffset;
+	TextSprite* text;
+	float timer = 0;
 
-	//float score = 0;
-	//bool paused = false;
+	void CalculateOffset();
 
-	//void ResetScene();
-	//void PauseGame();
-	//void OpenOptions();
+	bool calculated = false;
 };
 
 #endif

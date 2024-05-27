@@ -3,14 +3,14 @@
 
 #include "framework/scene.h"
 #include "framework/textsprite.h"
-
-//class Spawner;
+#include "framework/drawsprite.h"
+#include "Level.h"
 
 class Level1Scene : public Level
 {
 public:
 	/// @brief Constructor
-	Level1Scene();
+	Level1Scene(float os, std::string music);
 	/// @brief Destructor
 	virtual ~Level1Scene();
 
@@ -21,6 +21,13 @@ public:
 
 private:
 	Music leveltrack;
+
+	TextSprite* text;
+
+	DrawSprite* light1;
+	DrawSprite* light2;
+	DrawSprite* light3;
+	DrawSprite* light4;
 
 	//float score = 0;
 	//bool paused = false;

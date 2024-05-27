@@ -5,7 +5,8 @@
 
 #include "framework/scene.h"
 #include "menuscene.h"
-#include "gamescene.h"
+#include "level1scene.h"
+#include "callibrationscene.h"
 
 class SceneManager
 {
@@ -25,8 +26,10 @@ private:
 
 	Scene* currentScene = nullptr;
 
-	enum Active {menuscene, callibrationscene, level1, level2};
+	enum Active {menuscene, calibrationscene, level1, level2};
 	Active active;
+
+	float timingOffset;
 };
 
 #endif
