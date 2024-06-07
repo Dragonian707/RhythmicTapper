@@ -20,6 +20,9 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	//gets what the offset should be
+	float GetOffset() { return finalOffset; }
+
 private:
 	Music practicetrack;
 	std::vector<float> offsets;

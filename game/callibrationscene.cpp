@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include "callibrationscene.h"
+#include "scenemanager.h"
 
 
 
@@ -29,9 +30,15 @@ void CalibrationScene::update(float deltaTime)
 	{
 		CloseGame();
 	}
+
+	if (IsKeyPressed(KEY_ENTER))
+	{
+		activescene = 2;
+	}
+
 	if (calculated) { return; }
+
 	timer += deltaTime;
-	text->SetMessage(std::to_string(GetKeyPressed()));
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
@@ -86,5 +93,6 @@ void CalibrationScene::CalculateOffset()
 	t += std::to_string(finalOffset);
 
 	text->SetMessage(t);
+	SceneManager::Instance()->SetOffset(finalOffset);
 	calculated = true;
 }

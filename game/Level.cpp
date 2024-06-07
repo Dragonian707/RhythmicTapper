@@ -16,6 +16,7 @@ Level::Level(float os)
 	flavorText = new TextSprite();
 	flavorText->SetMessage("Doing pretty well eh?");
 	flavorText->position = Vector2(SCRWIDTH / 2, SCRHEIGHT / 2 - 200);
+	AddObject(flavorText);
 }
 
 Level::~Level()
@@ -23,14 +24,14 @@ Level::~Level()
 	
 }
 
-void Level::RestartLevel()
+void Level::RestartLevel(Music song)
 {
 	//reset the level
 	ready = false;
-	score = 0;
+	misses = 0;
 	grade = 'S';
-	StopMusicStream(leveltrack);
-	PlayMusicStream(leveltrack);
+	StopMusicStream(song);
+	PlayMusicStream(song);
 }
 
 void Level::PauseUnpauseGame()
@@ -46,18 +47,19 @@ void Level::PauseUnpauseGame()
 	paused = !paused;
 }
 
-void Level::CalculateGrade()
+std::string Level::CalculateGrade()
 {
-	if (score >= 25)	{ grade = 'F'; return; }
-	if (score >= 17)	{ grade = 'D'; return; }
-	if (score >= 12)	{ grade = 'C'; return; }
-	if (score >= 5)		{ grade = 'B'; return; }
-	if (score >= 1)		{ grade = 'A'; return; }
+	if (misses >= 16)		{ grade = "F"; }
+	else if (misses >= 12)  { grade = "D"; }
+	else if (misses >= 8)	{ grade = "C"; }
+	else if (misses >= 4)	{ grade = "B"; }
+	else if (misses >= 1)	{ grade = "A"; }
+	else					{ grade = "S"; }
 	
-	grade = 'S';
+	return grade;
 }
 
 void Level::ShowGrade()
 {
-
+	
 }

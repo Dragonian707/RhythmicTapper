@@ -17,6 +17,8 @@ public:
 
 	void SetActiveScene();
 
+	void SetOffset(float offset) { timingOffset = offset; }
+
 private:
 	static SceneManager* _instance;
 	/// @brief Constructor
@@ -29,7 +31,7 @@ private:
 	enum Active {menuscene, calibrationscene, level1, level2};
 	Active active;
 
-	float timingOffset;
+	float timingOffset = 0;
 };
 
 #endif

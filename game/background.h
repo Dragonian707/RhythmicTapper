@@ -1,29 +1,27 @@
-#ifndef INDICATORLIGHT_H
-#define INDICATORLIGHT_H
+#ifndef BACKGROUND_H
+#define BACKGROUND_H
 
 #include "framework/drawsprite.h"
 #include "settings.h";
 
-class IndicatorLight : public DrawSprite
+class Background : public DrawSprite
 {
 public:
 	/// @brief Constructor
-	IndicatorLight(Color defColor);
+	Background(std::string bgPath);
 	/// @brief Destructor
-	virtual ~IndicatorLight();
+	virtual ~Background();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
 
-	void Change(float time = 0.75f);
+	//change the background color to the specified color
+	void Change(Color col);
 
 private:
-	Color defaultColor;
 
-	float timer;
-	float changeTime;
 };
 
 #endif

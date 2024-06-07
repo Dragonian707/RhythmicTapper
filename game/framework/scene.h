@@ -15,6 +15,7 @@ public:
 
 	void AddObject(Sprite* object);
 	void DeleteObject(Sprite* object);
+	void RemoveObject(Sprite* object);
 
 	int activescene;
 	enum State {running, closegame};

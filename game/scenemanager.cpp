@@ -46,6 +46,7 @@ void SceneManager::SetActiveScene()
 	{
 		return;
 	}
+
 	std::cout << "changing scene to " << currentScene->activescene << std::endl;
 	switch (currentScene->activescene)
 	{
@@ -61,7 +62,7 @@ void SceneManager::SetActiveScene()
 			break;
 		case 2: //level 1
 			delete currentScene;
-			currentScene = new Level1Scene(0, "assets/track1.mp3");
+			currentScene = new Level1Scene(timingOffset, "assets/track1.mp3");
 			active = level1;
 			break;
 		default:

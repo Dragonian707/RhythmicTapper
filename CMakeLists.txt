@@ -39,6 +39,8 @@ add_executable(${PROJECT_NAME}
 	game/settings.h
 	game/indicatorlight.cpp
 	game/indicatorlight.h
+	game/background.cpp
+	game/background.h
 )
 file(
 	COPY game/assets

@@ -3,8 +3,9 @@
 
 #include "framework/scene.h"
 #include "framework/textsprite.h"
-#include "framework/drawsprite.h"
+#include "indicatorlight.h"
 #include "Level.h"
+#include "background.h"
 
 class Level1Scene : public Level
 {
@@ -24,10 +25,28 @@ private:
 
 	TextSprite* text;
 
-	DrawSprite* light1;
-	DrawSprite* light2;
-	DrawSprite* light3;
-	DrawSprite* light4;
+	IndicatorLight* light1;
+	IndicatorLight* light2;
+	IndicatorLight* light3;
+	IndicatorLight* light4;
+	IndicatorLight* light5;
+
+	std::vector<IndicatorLight*> lights;
+
+	int currentToHit = 0;
+
+	Background* bg;
+
+	// sends a pulse to the light
+	// @param light: the light to send a pulse to
+	void SendPulse(int light, Color col = WHITE);
+
+	//sets up all the times specific lights need to flicker to indicate hit beats
+	void Setuppulses();
+
+	//gets called every frame
+	//checks whether there is a hit incoming and when the spacebar is tapped if it's good enough or not
+	void CheckHits();
 
 	//float score = 0;
 	//bool paused = false;

@@ -54,6 +54,17 @@ void Scene::DeleteObject(Sprite* sprite)
 	}
 }
 
+void Scene::RemoveObject(Sprite* sprite)
+{
+	for (int i = 0; i < sprites.size(); i++)
+	{
+		if (sprites[i] == sprite)
+		{
+			sprites.erase(sprites.begin() + i);
+		}
+	}
+}
+
 void Scene::CloseGame()
 {
 	state = closegame;
