@@ -33,6 +33,10 @@ private:
 
 	std::vector<IndicatorLight*> lights;
 
+	//track when the background needs to change to what color
+	std::vector<float> bgPulses;
+	std::vector<Color> bgColors;
+
 	int currentToHit = 0;
 
 	Background* bg;
@@ -42,7 +46,7 @@ private:
 	void SendPulse(int light, Color col = WHITE);
 
 	//sets up all the times specific lights need to flicker to indicate hit beats
-	void Setuppulses();
+	void SetupPulses();
 
 	//gets called every frame
 	//checks whether there is a hit incoming and when the spacebar is tapped if it's good enough or not
