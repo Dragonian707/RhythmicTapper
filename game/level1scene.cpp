@@ -15,14 +15,14 @@ Level1Scene::Level1Scene(float os, std::string music) : Level(os)
 
 	text = new TextSprite();
 	text->position = Vector2(SCRWIDTH / 2, SCRHEIGHT / 2);
-	text->SetMessage("Must be doing well eh?");
+	text->SetMessage("Press space to ready up");
 	text->scale = 5.0f;
 	AddObject(text);
 
 	bg = new Background("assets/background1.png");
 	bg->position = Vector2(SCRWIDTH / 2, SCRHEIGHT / 2);
 	bg->color = BLACK;
-	AddObject(bg);
+	objects.push_back(bg);
 
 	light1 = new IndicatorLight(LIME);
 	light1->position = Vector2(SCRWIDTH / 2 - 75, SCRHEIGHT / 4 * 3);
@@ -63,6 +63,8 @@ Level1Scene::~Level1Scene()
 	{
 		DeleteObject(o);
 	}
+	objects.clear();
+
 }
 
 void Level1Scene::update(float deltaTime)
@@ -82,6 +84,7 @@ void Level1Scene::update(float deltaTime)
 				AddObject(o);
 			}
 			PlayMusicStream(leveltrack);
+			text->SetMessage("Doing well?");
 		}
 		return;
 	}
@@ -93,24 +96,16 @@ void Level1Scene::update(float deltaTime)
 
 	if (IsKeyPressed(KEY_R))
 	{
-		StopMusicStream(leveltrack);
 		RestartLevel(leveltrack);
+
 		for (DrawSprite* o : objects)
 		{
 			RemoveObject(o);
 		}
-		text->SetMessage("  Not satisfied\nwith the result?");
 		SetupPulses();
 		currentToHit = 0;
-		timer = 0;
 		bg->color = BLACK;
-		misses = 0;
 		return;
-	}
-
-	if (IsKeyPressed(KEY_ENTER))
-	{
-		text->SetMessage(std::to_string(misses));
 	}
 
 	if (pulses.size() <= 0) { return; }
@@ -145,7 +140,7 @@ void Level1Scene::CheckHits()
 	{
 		//cut-off should be 150ms
 		//stuff gets counted a second before and after a beat hit
-		if (timer - toHit[currentToHit] - offset >= 0.1f || timer - toHit[currentToHit] - offset <= -0.1f)
+		if (timer - toHit[currentToHit] - offset >= 0.05f || timer - toHit[currentToHit] - offset <= -0.05f)
 		{
 			misses++;
 			light5->color = RED;

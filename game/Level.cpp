@@ -31,7 +31,7 @@ void Level::RestartLevel(Music song)
 	misses = 0;
 	grade = 'S';
 	StopMusicStream(song);
-	//PlayMusicStream(song);
+	timer = 0;
 }
 
 void Level::PauseUnpauseGame()

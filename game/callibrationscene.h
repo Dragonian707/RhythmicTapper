@@ -4,6 +4,7 @@
 #include "framework/scene.h"
 #include "framework/textsprite.h"
 #include "settings.h"
+#include "indicatorlight.h"
 
 //class Spawner;
 
@@ -32,7 +33,19 @@ private:
 
 	void CalculateOffset();
 
+	void FlashLights();
+
 	bool calculated = false;
+
+	IndicatorLight* L1;
+	IndicatorLight* L2;
+	IndicatorLight* L3;
+	IndicatorLight* L4;
+
+	bool L1Bool = false;
+	bool L2Bool = false;
+	bool L3Bool = false;
+	bool L4Bool = false;
 };
 
 #endif
